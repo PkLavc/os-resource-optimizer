@@ -393,3 +393,5 @@ git push origin feature/new-scheduler
 ---
 
 *OS Resource Optimizer - Advanced system resource management for high-performance computing environments.*
+
+[![GitHub Sponsors](https://img.shields.io/badge/Sponsor%20me-%23ea4aaa?style=for-the-badge&logo=github-sponsors&logoColor=white)](https://github.com/sponsors/PkLavc)
