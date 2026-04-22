@@ -1,0 +1,13 @@
+{
+  "service": "backend-sim",
+  "project": "os-resource-optimizer",
+  "status": "ok",
+  "source": "github-actions",
+  "lastUpdated": "pending-first-workflow-run",
+  "runId": "manual",
+  "metrics": {
+    "latencyMs": 122,
+    "successRate": 99.0,
+    "eventsProcessed": 910
+  }
+}
