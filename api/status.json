@@ -3,11 +3,12 @@
   "project": "os-resource-optimizer",
   "status": "ok",
   "source": "github-actions",
-  "lastUpdated": "pending-first-workflow-run",
-  "runId": "manual",
+  "lastUpdated": "2026-04-23T02:09:41Z",
+  "runId": "24812855035",
+  "historyCount": 2,
   "metrics": {
-    "latencyMs": 122,
-    "successRate": 99.0,
-    "eventsProcessed": 910
+    "latencyMs": 139,
+    "successRate": 99.9,
+    "eventsProcessed": 4866
   }
 }
