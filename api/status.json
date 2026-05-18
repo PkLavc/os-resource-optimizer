@@ -3,12 +3,12 @@
   "project": "os-resource-optimizer",
   "status": "ok",
   "source": "github-actions",
-  "lastUpdated": "2026-05-17T18:22:51Z",
-  "runId": "25998986015",
+  "lastUpdated": "2026-05-18T00:38:41Z",
+  "runId": "26007438120",
   "historyCount": 28,
   "metrics": {
-    "latencyMs": 128,
-    "successRate": 99.3,
-    "eventsProcessed": 3383
+    "latencyMs": 69,
+    "successRate": 99.2,
+    "eventsProcessed": 5263
   }
 }
