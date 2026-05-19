@@ -103,6 +103,13 @@ public:
     uint64_t get_allocated_memory() const noexcept;
 
     /**
+     * @brief Deallocate all memory blocks belonging to a process
+     * @param process_id Process identifier
+     * @return size_t Number of bytes freed
+     */
+    size_t deallocate_all(uint32_t process_id);
+
+    /**
      * @brief Set allocation strategy
      * @param strategy New allocation strategy
      */

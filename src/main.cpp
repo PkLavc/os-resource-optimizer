@@ -326,7 +326,7 @@ PerformanceMetrics OSSimulator::run_simulation_iteration(SchedulingAlgorithm alg
                 current_process->set_completion_time(current_time);
                 
                 // Deallocate memory
-                memory_manager_->deallocate(current_process->get_pid(), 0);
+                memory_manager_->deallocate_all(current_process->get_pid());
             } else {
                 // Add back to ready queue or simulate I/O
                 if (random_gen_->generate_arrival_time(0, 100) < 10) {
