@@ -155,10 +155,11 @@ size_t MemoryManager::garbage_collect() {
             memory_blocks_[write_index - 1].address + memory_blocks_[write_index - 1].size : 0;
         uint64_t free_size = total_memory_ - free_start;
         
-        memory_blocks_.resize(write_index + 1);
-        memory_blocks_[write_index] = MemoryBlock(free_start, free_size);
-        memory_blocks_[write_index].is_allocated = false;
-        memory_blocks_[write_index].process_id = 0;
+        memory_blocks_.erase(memory_blocks_.begin() + static_cast<ptrdiff_t>(write_index),
+                             memory_blocks_.end());
+        memory_blocks_.emplace_back(free_start, free_size);
+        memory_blocks_.back().is_allocated = false;
+        memory_blocks_.back().process_id = 0;
     }
     
     return compacted;
@@ -180,6 +181,27 @@ uint64_t MemoryManager::get_allocated_memory() const noexcept {
                           [](uint64_t sum, const MemoryBlock& block) {
                               return sum + (block.is_allocated ? block.size : 0);
                           });
+}
+
+size_t MemoryManager::deallocate_all(uint32_t process_id) {
+    auto proc_it = process_allocations_.find(process_id);
+    if (proc_it == process_allocations_.end()) {
+        return 0;
+    }
+
+    size_t freed = 0;
+    for (auto& block : memory_blocks_) {
+        if (block.is_allocated && block.process_id == process_id) {
+            block.is_allocated = false;
+            block.process_id = 0;
+            freed += block.size;
+        }
+    }
+
+    process_allocations_.erase(proc_it);
+    coalesce_blocks();
+
+    return freed;
 }
 
 void MemoryManager::set_allocation_strategy(AllocationStrategy strategy) {
